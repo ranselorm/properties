@@ -32,8 +32,10 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     try {
       setLoading(true);
       const userData = await getUserData();
+      console.log("USER FETCHED");
       setUser(userData);
     } catch (error) {
+      console.log("ERROR FETCHING USER");
       setUser(null);
     } finally {
       setLoading(false);
@@ -44,11 +46,11 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     fetchUser();
   }, []);
 
-  useEffect(() => {
-    if (!loading && !user) {
-      router.replace("/login"); // Redirect to login if not authenticated
-    }
-  }, [loading, user]);
+  // useEffect(() => {
+  //   if (!loading && !user) {
+  //     router.replace("/login"); // Redirect to login if not authenticated
+  //   }
+  // }, [loading, user]);
 
   const logout = async () => {
     await logoutUser();

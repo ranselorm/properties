@@ -1,16 +1,9 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import { registerUser } from "@/lib/authService";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +13,7 @@ const Register = () => {
   const handleAuth = async () => {
     try {
       await registerUser(email, password, name);
+      router.replace("/(root)/(tabs)");
       alert("Registration successful!");
     } catch (error) {
       alert("Authentication failed");
@@ -61,7 +55,7 @@ const Register = () => {
         <TouchableOpacity
           className="w-full bg-black-300 rounded-md py-4 mt-6"
           activeOpacity={0.9}
-          onPress={() => Alert.alert("Pressed")}
+          onPress={handleAuth}
         >
           <Text className="text-white text-center font-rubik">Sign Up</Text>
         </TouchableOpacity>

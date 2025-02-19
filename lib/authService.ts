@@ -1,14 +1,26 @@
+import { router } from "expo-router";
 import { account } from "./appwriteConfig";
 
-// Register User
+import * as SecureStore from "expo-secure-store";
+
+// Register User & Auto-Login
 export const registerUser = async (
   email: string,
   password: string,
   name: string
 ) => {
   try {
+    // Register new user
     const user = await account.create("unique()", email, password, name);
     console.log("User Registered:", user);
+
+    // Auto-login after registration
+    const session = await account.createEmailPasswordSession(email, password);
+    console.log("Auto-login successful:", session);
+
+    // Store session securely
+    await SecureStore.setItemAsync("session", session.$id);
+
     return user;
   } catch (error) {
     console.error("Registration Failed:", error);
@@ -33,6 +45,7 @@ export const logoutUser = async () => {
   try {
     await account.deleteSession("current");
     console.log("User Logged Out");
+    router.replace("/(auth)/login");
   } catch (error) {
     console.error("Logout Failed:", error);
   }
