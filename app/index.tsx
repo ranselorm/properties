@@ -39,7 +39,7 @@ const SignIn = () => {
             <Text className="text-primary-100">Your Ideal Home</Text>
           </Text>
           <TouchableOpacity
-            className="bg-primary-100 shadow-zinc-300 shadow-md py-4 rounded-md flex-row justify-center items-center w-full gap-x-4 mt-5"
+            className="bg-primary-100 shadow-zinc-300 shadow-md py-4 rounded-md flex-row justify-center items-center w-full gap-x-4 mt-20"
             onPress={() => router.push("/(auth)/sign-up")}
           >
             <Text className="text-lg font-rubik text-white uppercase">

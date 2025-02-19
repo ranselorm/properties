@@ -22,7 +22,7 @@ const Login = () => {
   const handleAuth = async () => {
     try {
       await loginUser(email, password);
-      alert("Registration successful!");
+      alert("Login successful!");
     } catch (error) {
       alert("Authentication failed");
     }
@@ -39,13 +39,6 @@ const Login = () => {
         <Text className="font-rubik text-4xl mt-5">Login</Text>
       </View>
       <View className="flex-1 items-center mt-24 w-full px-12 gap-y-5">
-        <TextInput
-          placeholder="Name"
-          value={name}
-          onChangeText={setName}
-          className="bg-gray-200 w-full py-4 pl-4 rounded-md"
-        />
-
         <TextInput
           placeholder="Email"
           value={email}
@@ -65,7 +58,7 @@ const Login = () => {
           activeOpacity={0.9}
           onPress={() => Alert.alert("Pressed")}
         >
-          <Text className="text-white text-center font-rubik">Sign Up</Text>
+          <Text className="text-white text-center font-rubik">Login</Text>
         </TouchableOpacity>
         <Text className="text-lg font-rubik">
           Don't have an account?{" "}
@@ -73,10 +66,6 @@ const Login = () => {
             Signup
           </Link>
         </Text>
-
-        {/* <Link href={"/"}>Login</Link> */}
-
-        {/* <Button title="Login" onPress={handleAuth} /> */}
       </View>
     </SafeAreaView>
   );
