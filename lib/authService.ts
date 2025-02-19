@@ -55,6 +55,7 @@ export const logoutUser = async () => {
 export const getUserData = async () => {
   try {
     const user = await account.get();
+    router.replace("/(root)/(tabs)");
     console.log("User Data:", user);
     return user;
   } catch (error) {

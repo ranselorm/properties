@@ -1,27 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
-import icons from "@/constants/icons";
-import { login } from "@/lib/appwrite";
 import { router } from "expo-router";
 
 const SignIn = () => {
-  const handleLogin = async () => {
-    const result = await login();
-    if (result) {
-      console.log("Login successful");
-    } else {
-      Alert.alert("Failed to login");
-    }
-  };
   return (
     <SafeAreaView className="bg-white h-full">
       <ScrollView contentContainerClassName="h-full">
@@ -41,6 +24,7 @@ const SignIn = () => {
           <TouchableOpacity
             className="bg-primary-100 shadow-zinc-300 shadow-md py-4 rounded-md flex-row justify-center items-center w-full gap-x-4 mt-20"
             onPress={() => router.push("/(auth)/sign-up")}
+            activeOpacity={0.9}
           >
             <Text className="text-lg font-rubik text-white uppercase">
               Get started

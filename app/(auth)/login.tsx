@@ -11,18 +11,17 @@ import {
 import { loginUser } from "@/lib/authService";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
 
   const handleAuth = async () => {
     try {
       await loginUser(email, password);
       alert("Login successful!");
+      router.replace("/(root)/(tabs)");
     } catch (error) {
       alert("Authentication failed");
     }
@@ -56,7 +55,7 @@ const Login = () => {
         <TouchableOpacity
           className="w-full bg-black-300 rounded-md py-4 mt-6"
           activeOpacity={0.9}
-          onPress={() => Alert.alert("Pressed")}
+          onPress={handleAuth}
         >
           <Text className="text-white text-center font-rubik">Login</Text>
         </TouchableOpacity>
