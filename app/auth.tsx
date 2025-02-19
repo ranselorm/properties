@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { registerUser, loginUser } from "../lib/authService";
 
-const AuthScreen = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -10,20 +10,15 @@ const AuthScreen = () => {
 
   const handleAuth = async () => {
     try {
-      if (isRegister) {
-        await registerUser(email, password, name);
-        alert("Registration successful!");
-      } else {
-        await loginUser(email, password);
-        alert("Login successful!");
-      }
+      await registerUser(email, password, name);
+      alert("Registration successful!");
     } catch (error) {
       alert("Authentication failed");
     }
   };
 
   return (
-    <View style={{ padding: 20 }}>
+    <View className="flex-1">
       <Text>{isRegister ? "Register" : "Login"}</Text>
       {isRegister && (
         <TextInput placeholder="Name" value={name} onChangeText={setName} />
@@ -40,13 +35,9 @@ const AuthScreen = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title={isRegister ? "Register" : "Login"} onPress={handleAuth} />
-      <Button
-        title={isRegister ? "Switch to Login" : "Switch to Register"}
-        onPress={() => setIsRegister(!isRegister)}
-      />
+      <Button title="Register" onPress={handleAuth} />
     </View>
   );
 };
 
-export default AuthScreen;
+export default Register;
