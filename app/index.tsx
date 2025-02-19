@@ -11,6 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
 import icons from "@/constants/icons";
 import { login } from "@/lib/appwrite";
+import { router } from "expo-router";
 
 const SignIn = () => {
   const handleLogin = async () => {
@@ -37,20 +38,12 @@ const SignIn = () => {
             Let's Get You Closer To {"\n"}
             <Text className="text-primary-100">Your Ideal Home</Text>
           </Text>
-          <Text className="text-center mt-12 font-rubik text-black-200 text-lg ">
-            Login to Restate
-          </Text>
           <TouchableOpacity
-            onPress={handleLogin}
-            className="bg-white shadow-zinc-300 shadow-md py-2 rounded-full flex-row justify-center items-center w-full gap-x-4 mt-5"
+            className="bg-primary-100 shadow-zinc-300 shadow-md py-4 rounded-md flex-row justify-center items-center w-full gap-x-4 mt-5"
+            onPress={() => router.push("/(auth)/sign-up")}
           >
-            <Image
-              source={icons.google}
-              className="w-5 h-5"
-              resizeMode="contain"
-            />
-            <Text className="text-lg font-rubik-medium text-black-200">
-              Continue with Google
+            <Text className="text-lg font-rubik text-white uppercase">
+              Get started
             </Text>
           </TouchableOpacity>
         </View>
