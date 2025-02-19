@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   Image,
   TouchableOpacity,
   Alert,
@@ -72,10 +71,6 @@ const Register = () => {
             Login
           </Link>
         </Text>
-
-        {/* <Link href={"/"}>Login</Link> */}
-
-        {/* <Button title="Register" onPress={handleAuth} /> */}
       </View>
     </SafeAreaView>
   );

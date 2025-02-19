@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <View className="">
       <Text>Home screen</Text>
-      <Link href="/auth" className="text-3xl uppercase text-green-700">
+      <Link href="/sign-up" className="text-3xl uppercase text-green-700">
         Sign In
       </Link>
     </View>
