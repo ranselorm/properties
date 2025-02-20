@@ -7,25 +7,36 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import { loginUser } from "@/lib/authService";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
-import { Link, router } from "expo-router";
+import { Link, Redirect, router } from "expo-router";
+import { useGlobalContext } from "@/lib/globalProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const { loading, isLoggedIn } = useGlobalContext();
 
   const handleAuth = async () => {
     try {
+      setLoading(true);
       await loginUser(email, password);
       alert("Login successful!");
       router.replace("/(root)/(tabs)");
     } catch (error) {
       alert("Authentication failed");
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (!loading && isLoggedIn) return <Redirect href="/(root)/(tabs)" />;
+  if (isLoading) return <ActivityIndicator />;
 
   return (
     <SafeAreaView className="flex-1 bg-white items-center">

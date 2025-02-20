@@ -1,6 +1,5 @@
 import { router } from "expo-router";
 import { account } from "./appwriteConfig";
-
 import * as SecureStore from "expo-secure-store";
 
 // Register User & Auto-Login

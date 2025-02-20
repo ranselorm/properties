@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { registerUser } from "@/lib/authService";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
@@ -9,16 +16,23 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleAuth = async () => {
     try {
+      setLoading(true);
       await registerUser(email, password, name);
       router.replace("/(root)/(tabs)");
       alert("Registration successful!");
     } catch (error) {
       alert("Authentication failed");
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) return <ActivityIndicator />;
 
   return (
     <SafeAreaView className="flex-1 bg-white items-center">
