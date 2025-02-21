@@ -10,15 +10,8 @@ const Home = () => {
   // if (!loading && !user) return <Redirect href="/(auth)/login" />;
 
   return (
-    <View className="">
-      <Text>Home screen</Text>
-      <Link href="/sign-up" className="text-3xl uppercase text-green-700">
-        Sign In
-      </Link>
-
-      <Text>{user?.name}</Text>
-      <Text>{user?.email}</Text>
-      <Button title="Logout" onPress={logoutUser} />
+    <View className="flex-1 items-center justify-center">
+      <Text className="text-3xl">Welcome to ReState</Text>
     </View>
   );
 };
