@@ -10,7 +10,7 @@ const Profile = () => {
         showsVerticalScrollIndicator={false}
         contentContainerClassName="pb-4 px-7"
       >
-        <View className="items-center justify-between flex-row mt-5">
+        <View className="items-center justify-between flex-row mt-6">
           <Text className="text-xl font-rubik-bold">Profile</Text>
           <Image source={icons.bell} className="size-6" />
         </View>
